@@ -1,0 +1,17 @@
+{
+  "name": "sku-elm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/main.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server/main",
+    "test": "elm-test"
+  },
+  "author": "",
+  "license": "ISC"
+}
