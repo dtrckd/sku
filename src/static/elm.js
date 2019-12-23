@@ -5474,10 +5474,10 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$RenderMD$GotText = function (a) {
+var $author$project$Main$GotText = function (a) {
 	return {$: 'GotText', a: a};
 };
-var $author$project$RenderMD$Loading = {$: 'Loading'};
+var $author$project$Main$Loading = {$: 'Loading'};
 var $elm$http$Http$BadStatus_ = F2(
 	function (a, b) {
 		return {$: 'BadStatus_', a: a, b: b};
@@ -6257,36 +6257,36 @@ var $elm$http$Http$get = function (r) {
 	return $elm$http$Http$request(
 		{body: $elm$http$Http$emptyBody, expect: r.expect, headers: _List_Nil, method: 'GET', timeout: $elm$core$Maybe$Nothing, tracker: $elm$core$Maybe$Nothing, url: r.url});
 };
-var $author$project$RenderMD$init = function (_v0) {
+var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		$author$project$RenderMD$Loading,
+		$author$project$Main$Loading,
 		$elm$http$Http$get(
 			{
-				expect: $elm$http$Http$expectString($author$project$RenderMD$GotText),
+				expect: $elm$http$Http$expectString($author$project$Main$GotText),
 				url: 'sku/sku'
 			}));
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $author$project$RenderMD$subscriptions = function (model) {
+var $author$project$Main$subscriptions = function (model) {
 	return $elm$core$Platform$Sub$none;
 };
-var $author$project$RenderMD$Failure = {$: 'Failure'};
-var $author$project$RenderMD$Success = function (a) {
+var $author$project$Main$Failure = {$: 'Failure'};
+var $author$project$Main$Success = function (a) {
 	return {$: 'Success', a: a};
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$RenderMD$update = F2(
+var $author$project$Main$update = F2(
 	function (msg, model) {
 		var result = msg.a;
 		if (result.$ === 'Ok') {
 			var fullText = result.a;
 			return _Utils_Tuple2(
-				$author$project$RenderMD$Success(fullText),
+				$author$project$Main$Success(fullText),
 				$elm$core$Platform$Cmd$none);
 		} else {
-			return _Utils_Tuple2($author$project$RenderMD$Failure, $elm$core$Platform$Cmd$none);
+			return _Utils_Tuple2($author$project$Main$Failure, $elm$core$Platform$Cmd$none);
 		}
 	});
 var $elm$html$Html$div = _VirtualDom_node('div');
@@ -10437,7 +10437,7 @@ var $pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				$pablohirafuji$elm_markdown$Markdown$Block$toHtml,
 				A2($pablohirafuji$elm_markdown$Markdown$Block$parse, maybeOptions, rawText)));
 	});
-var $author$project$RenderMD$view = function (model) {
+var $author$project$Main$view = function (model) {
 	switch (model.$) {
 		case 'Failure':
 			return $elm$html$Html$text('I was unable to load your book.');
@@ -10451,7 +10451,7 @@ var $author$project$RenderMD$view = function (model) {
 				A2($pablohirafuji$elm_markdown$Markdown$toHtml, $elm$core$Maybe$Nothing, fullText));
 	}
 };
-var $author$project$RenderMD$main = $elm$browser$Browser$element(
-	{init: $author$project$RenderMD$init, subscriptions: $author$project$RenderMD$subscriptions, update: $author$project$RenderMD$update, view: $author$project$RenderMD$view});
-_Platform_export({'RenderMD':{'init':$author$project$RenderMD$main(
+var $author$project$Main$main = $elm$browser$Browser$element(
+	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
+_Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

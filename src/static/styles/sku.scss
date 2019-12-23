@@ -1,4 +1,12 @@
-.postMD {
+
+$primary-color: #2e878a;
+
+.main_elm {
+
+  h1 {
+    color: $primary-color;
+  }
+
   ul {
     list-style-type: none;
   }

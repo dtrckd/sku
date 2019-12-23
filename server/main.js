@@ -15,12 +15,12 @@ app.get("/hello", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile('/index.html', {root:__dirname+'/..'})
+  res.sendFile('/index.html', {root:__dirname+'/../dist'})
 });
 
 app.get("/sku/:id", (req, res) => {
   var id = req.params.id;
-	var fn = path.join(__dirname, '..', 'data', 'posts', id+".md");
+	var fn = path.join(__dirname, '../dist', 'data', 'posts', id+".md");
 	console.log(fn)
 
 	fs.stat(fn, function(err, stat) {
@@ -58,7 +58,8 @@ app.use('/hello', (req, res, next) => {
       next();
 });
 
-app.use('/static', express.static(path.join(__dirname,'..','src','static')));
+//app.use('/static', express.static(path.join(__dirname,'..','src','static')));
+app.use('/', express.static(path.join(__dirname, '..', 'dist')));
 
 app.use(function (req, res) {
     res.status(404).render('error');
