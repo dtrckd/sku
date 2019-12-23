@@ -72,5 +72,14 @@ module.exports = {
 	devServer: {
 		inline: true,
 		stats: { colors: true },
+		proxy: [ // allows redirect of requests to webpack-dev-server to another destination
+			{
+				context: ['/', '/sku'],  // can have multiple
+				target: 'http://localhost:3000', // server and port to redirect to
+				secure: false,
+			},
+		],
+
+
 	},
 };
