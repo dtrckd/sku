@@ -6,19 +6,6 @@
   "dependencies": {
     "express": "^4.17.1",
   },
-  "devDependencies": {
-    "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.4.0",
-    "elm-hot-webpack-loader": "^1.1.6",
-    "node-sass": "^4.13.0",
-    "file-loader": "^5.0.2"
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.1.1",
-    "elm-webpack-loader": "^6.0.1",
-    "webpack": "^4.41.4",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
-  },
   "scripts": {
     "start": "node server/main",
     "start_dev": "nodemon server/main",
