@@ -8,8 +8,8 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 const app = express();
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'jade');
 
 // Route
 app.get("/hello", (req, res) => {
@@ -65,6 +65,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'dist')));
 
 app.use(function (req, res) {
     res.status(404).render('error');
+    return '404'
 });
 
 // Run
