@@ -1,17 +1,90 @@
 
 $primary-color: #2e878a;
+$secondary-color: #2773d0;
 
-.main_elm {
+$random_deg1: random(360);
+$random_deg2: random(360);
+$random_deg3: random(360);
+$random_deg5: random(360);
+$random_deg6: random(360);
+$random_255: random(255);
+
+/* add font from https://www.recursive.design/ */
+@font-face {
+  font-family: "Recursive";
+  font-weight: 300 900;
+  src: url("/static/fonts/recursive-prop_xprn_weight_slnt_ital--2019_09_05.woff2"); }
+@font-face {
+  font-family: "recursive-subset";
+  font-weight: 300 900;
+  src: url("/static/fonts/recursive-prop_xprn_weight_slnt_ital--2019_09_05--subset-0020_007F.woff2"); }
+
+
+#zeTitle {
+	font-family: 'recursive-subset','Recursive', mono;                                                                                                                                                             
+	--prop: "PROP" 0;                                                                                                                                                                                              
+	--xprn: "XPRN" 0;                                                                                                                                                                                              
+	--slnt: "slnt" 0;                                                                                                                                                                                              
+	--ital: "ital" 0;                                                                                                                                                                                              
+	font-variation-settings: "PROP" 0, "XPRN" 0.6, "wght" 650, "slnt" 0, "ital" 0.5;    
+
+	font-size:50px;
+	padding-left: 3em;
+}
+
+
+.in_elm {
+  max-width: 812px;
+	margin-right: auto;
+	margin-left: auto;
+
+	font-family: 'Recursive', lato, futura, mono;
 
   h1 {
     color: $primary-color;
+    font-size:40px;
+    text-align: center;
+  }
+
+  h2 {
+    color: $secondary-color;
+    font-size:35px;
+    padding-right: 30px;
+  }
+
+  p {
+    font-size: 23px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 
   ul {
     list-style-type: none;
+    font-size: 18px;
   }
 
   li {
     text-align: center;
   }
+
+  ._flip {
+    display: inline;
+
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    -webkit-transform: perspective(250px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform: perspective(250px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    display:inline-block;
+
+    &:hover {
+      -webkit-transform: perspective($random_255+px) rotateX($random_deg1+deg) rotateY($random_deg2+deg) rotateZ(0deg);
+      transform: perspective($random_255+px) rotateX($random_deg1+deg) rotateY($random_deg2+deg) rotateZ(0deg);
+    }
+
+  }
+
+
+
 }
+
+

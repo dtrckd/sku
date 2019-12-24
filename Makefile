@@ -5,8 +5,10 @@ install:
 	npm install
 
 build:
-	#elm make src/elm/* --output src/static/elm.js
 	npm run build 
+
+elm:
+	elm make src/elm/* --output src/static/elm.js
 
 build_hot:
 	npm run client

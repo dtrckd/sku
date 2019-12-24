@@ -6289,6 +6289,58 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2($author$project$Main$Failure, $elm$core$Platform$Cmd$none);
 		}
 	});
+var $elm$core$Basics$not = _Basics_not;
+var $elm$core$String$replace = F3(
+	function (before, after, string) {
+		return A2(
+			$elm$core$String$join,
+			after,
+			A2($elm$core$String$split, before, string));
+	});
+var $elm$core$String$words = _String_words;
+var $author$project$Main$addSpan = function (text) {
+	return A3(
+		$elm$core$String$replace,
+		'[_BR_]',
+		'\n',
+		A2(
+			$elm$core$String$join,
+			' ',
+			A3(
+				$elm$core$List$foldl,
+				F2(
+					function (x, y) {
+						return (($elm$core$String$length(x) > 1) && (!A2(
+							$elm$core$String$contains,
+							A2($elm$core$String$left, 1, x),
+							'#-+*_.,;()|{}[]:'))) ? _Utils_ap(
+							y,
+							_List_fromArray(
+								['<div class=\"_flip\">' + (x + '</div>')])) : _Utils_ap(
+							y,
+							_List_fromArray(
+								[x]));
+					}),
+				_List_Nil,
+				$elm$core$String$words(
+					A3($elm$core$String$replace, '\n', ' [_BR_] ', text)))));
+};
+var $pablohirafuji$elm_markdown$Markdown$Config$ParseUnsafe = {$: 'ParseUnsafe'};
+var $pablohirafuji$elm_markdown$Markdown$Config$Sanitize = function (a) {
+	return {$: 'Sanitize', a: a};
+};
+var $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlAttributes = _List_fromArray(
+	['name', 'class']);
+var $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlElements = _List_fromArray(
+	['address', 'article', 'aside', 'b', 'blockquote', 'br', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'details', 'div', 'dl', 'dt', 'figcaption', 'figure', 'footer', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'legend', 'li', 'menu', 'menuitem', 'nav', 'ol', 'optgroup', 'option', 'p', 'pre', 'section', 'strike', 'summary', 'small', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'ul']);
+var $pablohirafuji$elm_markdown$Markdown$Config$defaultSanitizeOptions = {allowedHtmlAttributes: $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlAttributes, allowedHtmlElements: $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlElements};
+var $pablohirafuji$elm_markdown$Markdown$Config$defaultOptions = {
+	rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$Sanitize($pablohirafuji$elm_markdown$Markdown$Config$defaultSanitizeOptions),
+	softAsHardLineBreak: false
+};
+var $author$project$Main$customOptionsMD = _Utils_update(
+	$pablohirafuji$elm_markdown$Markdown$Config$defaultOptions,
+	{rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$ParseUnsafe});
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -6362,7 +6414,6 @@ var $elm$core$Basics$composeL = F3(
 		return g(
 			f(x));
 	});
-var $elm$core$Basics$not = _Basics_not;
 var $elm$core$List$all = F2(
 	function (isOkay, list) {
 		return !A2(
@@ -7216,7 +7267,6 @@ var $pablohirafuji$elm_markdown$Markdown$Helpers$formatStr = function (str) {
 			$pablohirafuji$elm_markdown$Markdown$Entity$replaceEntities(
 				$pablohirafuji$elm_markdown$Markdown$Helpers$replaceEscapable(str))));
 };
-var $elm$core$String$words = _String_words;
 var $pablohirafuji$elm_markdown$Markdown$Block$extractOpenCodeFenceRM = function (match) {
 	var _v0 = match.submatches;
 	if (((_v0.b && _v0.b.b) && (_v0.b.a.$ === 'Just')) && _v0.b.b.b) {
@@ -7899,18 +7949,6 @@ var $pablohirafuji$elm_markdown$Markdown$Block$Custom = F2(
 	});
 var $pablohirafuji$elm_markdown$Markdown$Block$PlainInlines = function (a) {
 	return {$: 'PlainInlines', a: a};
-};
-var $pablohirafuji$elm_markdown$Markdown$Config$Sanitize = function (a) {
-	return {$: 'Sanitize', a: a};
-};
-var $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlAttributes = _List_fromArray(
-	['name', 'class']);
-var $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlElements = _List_fromArray(
-	['address', 'article', 'aside', 'b', 'blockquote', 'br', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'details', 'div', 'dl', 'dt', 'figcaption', 'figure', 'footer', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'legend', 'li', 'menu', 'menuitem', 'nav', 'ol', 'optgroup', 'option', 'p', 'pre', 'section', 'strike', 'summary', 'small', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'ul']);
-var $pablohirafuji$elm_markdown$Markdown$Config$defaultSanitizeOptions = {allowedHtmlAttributes: $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlAttributes, allowedHtmlElements: $pablohirafuji$elm_markdown$Markdown$Config$defaultAllowedHtmlElements};
-var $pablohirafuji$elm_markdown$Markdown$Config$defaultOptions = {
-	rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$Sanitize($pablohirafuji$elm_markdown$Markdown$Config$defaultSanitizeOptions),
-	softAsHardLineBreak: false
 };
 var $pablohirafuji$elm_markdown$Markdown$InlineParser$initParser = F3(
 	function (options, refs, rawText) {
@@ -10448,7 +10486,10 @@ var $author$project$Main$view = function (model) {
 			return A2(
 				$elm$html$Html$div,
 				_List_Nil,
-				A2($pablohirafuji$elm_markdown$Markdown$toHtml, $elm$core$Maybe$Nothing, fullText));
+				A2(
+					$pablohirafuji$elm_markdown$Markdown$toHtml,
+					$elm$core$Maybe$Just($author$project$Main$customOptionsMD),
+					$author$project$Main$addSpan(fullText)));
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

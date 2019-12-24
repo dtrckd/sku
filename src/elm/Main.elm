@@ -3,21 +3,12 @@ module Main exposing (..)
 import Browser
 import Html exposing (Html, div, p, pre, text)
 import Html.Attributes exposing (..)
+import Html.Parser
 import Http
+import List.Extra
 import Markdown
-
-
-
--- MAIN
-
-
-main =
-    Browser.element
-        { init = init
-        , update = update
-        , subscriptions = subscriptions
-        , view = view
-        }
+import Markdown.Config exposing (HtmlOption(..), Options, defaultOptions)
+import Random
 
 
 
@@ -28,17 +19,6 @@ type Model
     = Failure
     | Loading
     | Success String
-
-
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( Loading
-    , Http.get
-        --{ url = "https://elm-lang.org/assets/public-opinion.txt"
-        { url = "sku/sku"
-        , expect = Http.expectString GotText
-        }
-    )
 
 
 
@@ -62,16 +42,46 @@ update msg model =
 
 
 
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
-
-
-
 -- VIEW
+
+
+lastOrEmpty : List String -> String
+lastOrEmpty alist =
+    case List.Extra.last alist of
+        Nothing ->
+            "-"
+
+        Just v ->
+            v
+
+
+addSpan : String -> String
+addSpan text =
+    --text ++ "<strong>frr</strong>"
+    text
+        |> String.replace "\n" " [_BR_] "
+        |> String.words
+        |> List.foldl
+            (\x y ->
+                if
+                    String.length x
+                        > 1
+                        && not (String.contains (String.left 1 x) "#-+*_.,;()|{}[]:")
+                    --&& not (String.contains (String.left 1 <| lastOrEmpty y) "#-+*_.,;()|{}[]:")
+                then
+                    y ++ [ "<div class=\"_flip\">" ++ x ++ "</div>" ]
+
+                else
+                    y ++ [ x ]
+            )
+            []
+        |> String.join " "
+        |> String.replace "[_BR_]" "\n"
+
+
+customOptionsMD : Options
+customOptionsMD =
+    { defaultOptions | rawHtml = ParseUnsafe }
 
 
 view : Model -> Html Msg
@@ -86,4 +96,38 @@ view model =
         Success fullText ->
             --pre [] [ text fullText ]
             div [] <|
-                Markdown.toHtml Nothing fullText
+                --Markdown.toHtml (Just customOptionsMD) fullText
+                (addSpan fullText |> Markdown.toHtml (Just customOptionsMD))
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+
+-- MAIN
+
+
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( Loading
+    , Http.get
+        --{ url = "https://elm-lang.org/assets/public-opinion.txt"
+        { url = "sku/sku"
+        , expect = Http.expectString GotText
+        }
+    )
+
+
+main =
+    Browser.element
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        }
