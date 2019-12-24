@@ -10,7 +10,7 @@
     "start": "node server/main",
     "start_dev": "nodemon server/main",
     "test": "elm-test",
-    "build": "webpack --mode production",
+    "build": "ls",
     "dev": "webpack --mode development",
     "client": "webpack-dev-server --hot --port 3001 --mode development"
   },
