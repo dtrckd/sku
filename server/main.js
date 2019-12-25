@@ -64,7 +64,7 @@ app.use('/hello', (req, res, next) => {
 app.use('/', express.static(path.join(__dirname, '..', 'dist')));
 
 app.use(function (req, res) {
-    res.status(404).render('error');
+    //res.status(404).render('error');
     return '404'
 });
 
