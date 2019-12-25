@@ -1,8 +1,11 @@
-# Sobriété, Kuite et Ubiquité. 
+
 
 <div class="_center">
-  <img  src="/static/img/sku_ban.png">
+  <img  src="/static/img/sku_ban.png" style="width: 100%;">
 </div>
+
+# Sobriété, Kuite et Ubiquité. 
+
 
 ## Prélude : L’eskureuil. 
 

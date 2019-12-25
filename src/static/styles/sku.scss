@@ -19,6 +19,8 @@ $random_255: random(255);
   font-weight: 300 900;
   src: url("/static/fonts/recursive-prop_xprn_weight_slnt_ital--2019_09_05--subset-0020_007F.woff2"); }
 
+
+
 ._center {
 	display: block;
 	float: none;
@@ -31,9 +33,8 @@ $random_255: random(255);
 }
 
 ._logo {
-  position:absolute;
-  left:-25px;
-  top:-10px;
+  display: relative;
+	left: -450px;
 }
 
 
@@ -55,6 +56,9 @@ $random_255: random(255);
 	margin-right: auto;
 	margin-left: auto;
 
+	position: relative;
+	top: -290px;
+
 	font-family: 'Recursive', lato, futura, mono;
 
   cursor: url('/static/img/crow.png'), auto; 
@@ -63,12 +67,20 @@ $random_255: random(255);
     color: $primary-color;
     font-size:70px;
     text-align: center;
+
+    font-weight: bold;
   }
 
   h2 {
     color: $secondary-color;
     font-size:50px;
     padding-right: 30px;
+
+    font-weight: bold;
+  }
+
+  h3 {
+    font-weight: bold;
   }
 
   p {
