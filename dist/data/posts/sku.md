@@ -1,5 +1,9 @@
 # Sobriété, Kuite et Ubiquité. 
 
+<div class="_center">
+  <img  src="/static/img/sku_ban.png">
+</div>
+
 ## Prélude : L’eskureuil. 
 
 * Au revoir. 

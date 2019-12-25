@@ -115,7 +115,8 @@ view model =
             div []
                 [ --Markdown.toHtml (Just customOptionsMD) fullText
                   div [] <|
-                    (addSpan fullText |> Markdown.toHtml (Just customOptionsMD))
+                    --(addSpan fullText |> Markdown.toHtml (Just customOptionsMD))
+                    Markdown.toHtml (Just customOptionsMD) fullText
                 ]
 
 

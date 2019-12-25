@@ -1,5 +1,5 @@
 
-$primary-color: #2e878a;
+$primary-color: white;
 $secondary-color: #2773d0;
 
 $random_deg1: random(360);
@@ -18,6 +18,23 @@ $random_255: random(255);
   font-family: "recursive-subset";
   font-weight: 300 900;
   src: url("/static/fonts/recursive-prop_xprn_weight_slnt_ital--2019_09_05--subset-0020_007F.woff2"); }
+
+._center {
+	display: block;
+	float: none;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+  margin: 0 auto;
+  /*width: 50%;*/
+
+}
+
+._logo {
+  position:absolute;
+  left:-25px;
+  top:-10px;
+}
 
 
 #zeTitle {

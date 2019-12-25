@@ -10526,37 +10526,9 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2($author$project$Main$Failure, $elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Main$addSpan = function (text) {
-	return A3(
-		$elm$core$String$replace,
-		'[_BR_]',
-		'\n',
-		A2(
-			$elm$core$String$join,
-			' ',
-			A3(
-				$elm$core$List$foldl,
-				F2(
-					function (x, y) {
-						return (($elm$core$String$length(x) > 1) && (!A2(
-							$elm$core$String$contains,
-							A2($elm$core$String$left, 1, x),
-							'#-+*_.,;()|{}[]:'))) ? _Utils_ap(
-							y,
-							_List_fromArray(
-								['<div class=\"_flip\">' + (x + '</div>')])) : _Utils_ap(
-							y,
-							_List_fromArray(
-								[x]));
-					}),
-				_List_Nil,
-				$elm$core$String$words(
-					A3($elm$core$String$replace, '\n', ' [_BR_] ', text)))));
-};
 var $author$project$Main$customOptionsMD = _Utils_update(
 	$pablohirafuji$elm_markdown$Markdown$Config$defaultOptions,
 	{rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$ParseUnsafe});
-var $elm$html$Html$iframe = _VirtualDom_node('iframe');
 var $author$project$Main$view = function (model) {
 	switch (model.$) {
 		case 'Failure':
@@ -10576,24 +10548,7 @@ var $author$project$Main$view = function (model) {
 						A2(
 							$pablohirafuji$elm_markdown$Markdown$toHtml,
 							$elm$core$Maybe$Just($author$project$Main$customOptionsMD),
-							$author$project$Main$addSpan(fullText))),
-						A2($elm$html$Html$iframe, _List_Nil, _List_Nil),
-						A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href('https://umap.openstreetmap.fr/fr/map/carte-sans-nom_401728')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Voir en plein écran')
-									]))
-							]))
+							fullText))
 					]));
 	}
 };
