@@ -1,7 +1,7 @@
-module Main exposing (..)
+module Post exposing (..)
 
 import Browser
-import Html exposing (Html, a, div, iframe, p, pre, text)
+import Html exposing (Html, div, p, pre, text)
 import Html.Attributes exposing (..)
 import Html.Parser
 import Http
@@ -112,11 +112,9 @@ view model =
 
         Success fullText ->
             --pre [] [ text fullText ]
-            div []
-                [ --Markdown.toHtml (Just customOptionsMD) fullText
-                  div [] <|
-                    (addSpan fullText |> Markdown.toHtml (Just customOptionsMD))
-                ]
+            div [] <|
+                --Markdown.toHtml (Just customOptionsMD) fullText
+                (addSpan fullText |> Markdown.toHtml (Just customOptionsMD))
 
 
 

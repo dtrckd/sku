@@ -5474,10 +5474,10 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Main$GotText = function (a) {
+var $author$project$Post$GotText = function (a) {
 	return {$: 'GotText', a: a};
 };
-var $author$project$Main$Loading = {$: 'Loading'};
+var $author$project$Post$Loading = {$: 'Loading'};
 var $elm$http$Http$BadStatus_ = F2(
 	function (a, b) {
 		return {$: 'BadStatus_', a: a, b: b};
@@ -6257,36 +6257,36 @@ var $elm$http$Http$get = function (r) {
 	return $elm$http$Http$request(
 		{body: $elm$http$Http$emptyBody, expect: r.expect, headers: _List_Nil, method: 'GET', timeout: $elm$core$Maybe$Nothing, tracker: $elm$core$Maybe$Nothing, url: r.url});
 };
-var $author$project$Main$init = function (_v0) {
+var $author$project$Post$init = function (_v0) {
 	return _Utils_Tuple2(
-		$author$project$Main$Loading,
+		$author$project$Post$Loading,
 		$elm$http$Http$get(
 			{
-				expect: $elm$http$Http$expectString($author$project$Main$GotText),
+				expect: $elm$http$Http$expectString($author$project$Post$GotText),
 				url: 'sku/sku'
 			}));
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $author$project$Main$subscriptions = function (model) {
+var $author$project$Post$subscriptions = function (model) {
 	return $elm$core$Platform$Sub$none;
 };
-var $author$project$Main$Failure = {$: 'Failure'};
-var $author$project$Main$Success = function (a) {
+var $author$project$Post$Failure = {$: 'Failure'};
+var $author$project$Post$Success = function (a) {
 	return {$: 'Success', a: a};
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$Main$update = F2(
+var $author$project$Post$update = F2(
 	function (msg, model) {
 		var result = msg.a;
 		if (result.$ === 'Ok') {
 			var fullText = result.a;
 			return _Utils_Tuple2(
-				$author$project$Main$Success(fullText),
+				$author$project$Post$Success(fullText),
 				$elm$core$Platform$Cmd$none);
 		} else {
-			return _Utils_Tuple2($author$project$Main$Failure, $elm$core$Platform$Cmd$none);
+			return _Utils_Tuple2($author$project$Post$Failure, $elm$core$Platform$Cmd$none);
 		}
 	});
 var $elm$core$Basics$not = _Basics_not;
@@ -6298,7 +6298,7 @@ var $elm$core$String$replace = F3(
 			A2($elm$core$String$split, before, string));
 	});
 var $elm$core$String$words = _String_words;
-var $author$project$Main$addSpan = function (text) {
+var $author$project$Post$addSpan = function (text) {
 	return A3(
 		$elm$core$String$replace,
 		'[_BR_]',
@@ -6338,7 +6338,7 @@ var $pablohirafuji$elm_markdown$Markdown$Config$defaultOptions = {
 	rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$Sanitize($pablohirafuji$elm_markdown$Markdown$Config$defaultSanitizeOptions),
 	softAsHardLineBreak: false
 };
-var $author$project$Main$customOptionsMD = _Utils_update(
+var $author$project$Post$customOptionsMD = _Utils_update(
 	$pablohirafuji$elm_markdown$Markdown$Config$defaultOptions,
 	{rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$ParseUnsafe});
 var $elm$html$Html$div = _VirtualDom_node('div');
@@ -10475,7 +10475,7 @@ var $pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				$pablohirafuji$elm_markdown$Markdown$Block$toHtml,
 				A2($pablohirafuji$elm_markdown$Markdown$Block$parse, maybeOptions, rawText)));
 	});
-var $author$project$Main$view = function (model) {
+var $author$project$Post$view = function (model) {
 	switch (model.$) {
 		case 'Failure':
 			return $elm$html$Html$text('I was unable to load your book.');
@@ -10488,11 +10488,117 @@ var $author$project$Main$view = function (model) {
 				_List_Nil,
 				A2(
 					$pablohirafuji$elm_markdown$Markdown$toHtml,
-					$elm$core$Maybe$Just($author$project$Main$customOptionsMD),
-					$author$project$Main$addSpan(fullText)));
+					$elm$core$Maybe$Just($author$project$Post$customOptionsMD),
+					$author$project$Post$addSpan(fullText)));
+	}
+};
+var $author$project$Post$main = $elm$browser$Browser$element(
+	{init: $author$project$Post$init, subscriptions: $author$project$Post$subscriptions, update: $author$project$Post$update, view: $author$project$Post$view});
+var $author$project$Main$GotText = function (a) {
+	return {$: 'GotText', a: a};
+};
+var $author$project$Main$Loading = {$: 'Loading'};
+var $author$project$Main$init = function (_v0) {
+	return _Utils_Tuple2(
+		$author$project$Main$Loading,
+		$elm$http$Http$get(
+			{
+				expect: $elm$http$Http$expectString($author$project$Main$GotText),
+				url: 'sku/sku'
+			}));
+};
+var $author$project$Main$subscriptions = function (model) {
+	return $elm$core$Platform$Sub$none;
+};
+var $author$project$Main$Failure = {$: 'Failure'};
+var $author$project$Main$Success = function (a) {
+	return {$: 'Success', a: a};
+};
+var $author$project$Main$update = F2(
+	function (msg, model) {
+		var result = msg.a;
+		if (result.$ === 'Ok') {
+			var fullText = result.a;
+			return _Utils_Tuple2(
+				$author$project$Main$Success(fullText),
+				$elm$core$Platform$Cmd$none);
+		} else {
+			return _Utils_Tuple2($author$project$Main$Failure, $elm$core$Platform$Cmd$none);
+		}
+	});
+var $author$project$Main$addSpan = function (text) {
+	return A3(
+		$elm$core$String$replace,
+		'[_BR_]',
+		'\n',
+		A2(
+			$elm$core$String$join,
+			' ',
+			A3(
+				$elm$core$List$foldl,
+				F2(
+					function (x, y) {
+						return (($elm$core$String$length(x) > 1) && (!A2(
+							$elm$core$String$contains,
+							A2($elm$core$String$left, 1, x),
+							'#-+*_.,;()|{}[]:'))) ? _Utils_ap(
+							y,
+							_List_fromArray(
+								['<div class=\"_flip\">' + (x + '</div>')])) : _Utils_ap(
+							y,
+							_List_fromArray(
+								[x]));
+					}),
+				_List_Nil,
+				$elm$core$String$words(
+					A3($elm$core$String$replace, '\n', ' [_BR_] ', text)))));
+};
+var $author$project$Main$customOptionsMD = _Utils_update(
+	$pablohirafuji$elm_markdown$Markdown$Config$defaultOptions,
+	{rawHtml: $pablohirafuji$elm_markdown$Markdown$Config$ParseUnsafe});
+var $elm$html$Html$iframe = _VirtualDom_node('iframe');
+var $author$project$Main$view = function (model) {
+	switch (model.$) {
+		case 'Failure':
+			return $elm$html$Html$text('I was unable to load your book.');
+		case 'Loading':
+			return $elm$html$Html$text('SkuuuuuSkuuuuuuu');
+		default:
+			var fullText = model.a;
+			return A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						A2(
+							$pablohirafuji$elm_markdown$Markdown$toHtml,
+							$elm$core$Maybe$Just($author$project$Main$customOptionsMD),
+							$author$project$Main$addSpan(fullText))),
+						A2($elm$html$Html$iframe, _List_Nil, _List_Nil),
+						A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$a,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href('https://umap.openstreetmap.fr/fr/map/carte-sans-nom_401728')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Voir en plein écran')
+									]))
+							]))
+					]));
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
+	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)},'Post':{'init':$author$project$Post$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

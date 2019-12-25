@@ -40,15 +40,17 @@ $random_255: random(255);
 
 	font-family: 'Recursive', lato, futura, mono;
 
+  cursor: url('/static/img/crow.svg'), auto; 
+
   h1 {
     color: $primary-color;
-    font-size:40px;
+    font-size:70px;
     text-align: center;
   }
 
   h2 {
     color: $secondary-color;
-    font-size:35px;
+    font-size:50px;
     padding-right: 30px;
   }
 
